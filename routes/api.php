@@ -17,9 +17,8 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+Route::apiResource('catalogs', 'API\FlowerCatalogController');
 
 Route::apiResource('flowers','API\FlowerController');
-
-Route::apiResource('flowercatalogs','API\FlowerCatalogController');
 
 Route::get('flowersfractal','API\FlowerController@indexWithTransformer');

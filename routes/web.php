@@ -34,3 +34,6 @@ Route::get('mflowers','FlowerController@getFlowerCreatedByMonth');
 Route::get('re', function() {
     echo 'hi';
 });
+
+Route::get('/view','FlowerCatalogController@index');
+Route::get('/updatecatalog/{flowerCatalog}','FlowerCatalogController@update');

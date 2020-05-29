@@ -166,7 +166,7 @@ return [
          * Package Service Providers...
          */
         Flugg\Responder\ResponderServiceProvider::class,
-
+        Collective\Html\HtmlServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -229,6 +229,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Responder' => Flugg\Responder\Facades\Responder::class,
         'Transformation' => Flugg\Responder\Facades\Transformation::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];

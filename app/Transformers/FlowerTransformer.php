@@ -4,6 +4,7 @@ namespace App\Transformers;
 
 use App\Flower;
 use Flugg\Responder\Transformers\Transformer;
+use Illuminate\Database\Eloquent\Builder;
 use function foo\func;
 
 class FlowerTransformer extends Transformer
@@ -41,22 +42,29 @@ class FlowerTransformer extends Transformer
     }
 
 
-    public function loadFlowerCatalog($query) {
-        return $query->whereNull('parent_id');
-    }
-
+    /**
+     *
+     *
+     * @param  Builder $query
+     * @return Builder
+     */
 
     public function includeFlowerCatalog(Flower $flower) {
         return $flower->flower_catalogs;
     }
 
     /*
-    public function filterFlowerCatalog($flowerCatalogs)
+    public function loadFlowerCatalog($query) {
+        return $query->where('name_catalog', '=', 'Dr. Dewitt Schumm DVM');
+    }
+    */
+    /*
+
+    public function filterFlowerCatalog($flowerCatalog)
     {
-        return $flowerCatalogs->filter(function ($flowerCatalog) {
-            return is_null($flowerCatalog->parent_id);
+        return $flowerCatalog->filter(function ($flowerC) {
+            return is_null($flowerC->parent_id);
         });
     }
     */
-
 }

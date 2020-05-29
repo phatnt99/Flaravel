@@ -40,7 +40,7 @@ class CreateFlowerCatalogRequest extends FormRequest
     public function messages()
     {
         return [
-            'name_catalog.required' => 'A given name cannot be empty!',
+            'name_catalog.required' => __('validation.required'),
             'name_catalog.unique' => 'A given name must be unique!'
         ];
     }
