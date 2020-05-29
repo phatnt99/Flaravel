@@ -37,3 +37,8 @@ Route::get('re', function() {
 
 Route::get('/view','FlowerCatalogController@index');
 Route::get('/updatecatalog/{flowerCatalog}','FlowerCatalogController@update');
+
+Route::get('/nameaccs', function () {
+   $nameCatalogWithAccessor = \App\FlowerCatalog::first()->name_catalog;
+   return $nameCatalogWithAccessor;
+});

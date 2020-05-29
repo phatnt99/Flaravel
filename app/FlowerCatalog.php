@@ -26,4 +26,9 @@ class FlowerCatalog extends Model
     {
         return $this->hasMany("App\Flower", 'catalog_id');
     }
+
+    //Accessors
+    public function getNameCatalogAttribute($value) {
+        return 'Your data is ' . $value;
+    }
 }
