@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateFlowerRequest;
 use App\Transformers\FlowerTransformer;
 use Flugg\Responder\Responder;
 use App\Http\Requests\CreateFlowerRequest;
+use function foo\func;
 
 class FlowerController extends Controller
 {
@@ -96,6 +97,10 @@ class FlowerController extends Controller
 
         //Include by query string
         //http://flower.com:8080/api/flowersfractal?with=flowerCatalog
-        return \responder()->success(Flower::all(), FlowerTransformer::class)->respond();
+        return \responder()->success(Flower::all(), FlowerTransformer::class)->with([
+            'flowerCatalog' => function($query) {
+                return $query->where('id', '488cfb4d-7c91-4c7c-be8e-7e8cb94bd83e');
+            }
+        ])->respond();
     }
 }
