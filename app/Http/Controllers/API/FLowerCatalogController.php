@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\FlowerCatalog;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateFlowerCatalogRequest;
+use App\Http\Requests\UpdateFlowerCatalogRequest;
+use App\Transformers\FlowerCatalogTransformer;
 use Illuminate\Http\Request;
 
 class FLowerCatalogController extends Controller
@@ -17,8 +19,8 @@ class FLowerCatalogController extends Controller
     public function index()
     {
         //
-        $res = FlowerCatalog::all();
-        return response()->json($res);
+        return responder()->success(FlowerCatalog::all(), FlowerCatalogTransformer::class)
+            ->with('flowers')->respond();
     }
 
     /**
@@ -27,14 +29,13 @@ class FLowerCatalogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(CreateFlowerCatalogRequest $request)
+    public function store(UpdateFlowerCatalogRequest $request)
     {
 
-        $validatedData = $request->validated();
         $flowerCatalog = new FlowerCatalog();
         $flowerCatalog->fill([
-            'name_catalog' => $validatedData['name_catalog'],
-            'parent_id' => $validatedData['parent_id']
+            'name_catalog' => $request->input['name_catalog'],
+            'parent_id' => $request->input['parent_id']
         ]);
         $flowerCatalog->save();
 
@@ -44,14 +45,13 @@ class FLowerCatalogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param FlowerCatalog $flowerCatalog
      * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id)
+    public function show(FlowerCatalog $flowerCatalog)
     {
         //
-        $res = FlowerCatalog::where('id',$id)->get();
-        return response()->json($res);
+        return responder()->success($flowerCatalog)->respond();
     }
 
     /**
@@ -61,13 +61,12 @@ class FLowerCatalogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(CreateFlowerCatalogRequest $request, $id)
+    public function update(CreateFlowerCatalogRequest $request, FlowerCatalog $flowerCatalog)
     {
         //
-        $validatedData = $request->validated();
-        $res = FlowerCatalog::where('id', $id)->update([
-            'name_catalog' => $validatedData['name_catalog'],
-            'parent_id' => $validatedData['parent_id'],
+        $flowerCatalog->update([
+            'name_catalog' => $request->input['name_catalog'],
+            'parent_id' => $request->input['parent_id'],
         ]);
 
         return response()->json("store flower catalog successfully");
@@ -77,10 +76,13 @@ class FLowerCatalogController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+    public function destroy(FlowerCatalog $flowerCatalog)
     {
         //
+        $flowerCatalog->delete();
+        return response()->json("delete successfully");
+
     }
 }
