@@ -29,10 +29,9 @@ class CreateFlowerCatalogRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->flowercatalog;
         return [
             //
-            'name_catalog' => 'required|unique:flower_catalogs,name_catalog,'.$id,
+            'name_catalog' => 'required|unique:flower_catalogs,name_catalog',
             'parent_id' => 'nullable',
         ];
 
