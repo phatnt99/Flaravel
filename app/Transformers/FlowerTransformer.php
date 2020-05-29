@@ -4,6 +4,7 @@ namespace App\Transformers;
 
 use App\Flower;
 use Flugg\Responder\Transformers\Transformer;
+use function foo\func;
 
 class FlowerTransformer extends Transformer
 {
@@ -39,8 +40,23 @@ class FlowerTransformer extends Transformer
         ];
     }
 
+
+    public function loadFlowerCatalog($query) {
+        return $query->whereNull('parent_id');
+    }
+
+
     public function includeFlowerCatalog(Flower $flower) {
         return $flower->flower_catalogs;
     }
+
+    /*
+    public function filterFlowerCatalog($flowerCatalogs)
+    {
+        return $flowerCatalogs->filter(function ($flowerCatalog) {
+            return is_null($flowerCatalog->parent_id);
+        });
+    }
+    */
 
 }
