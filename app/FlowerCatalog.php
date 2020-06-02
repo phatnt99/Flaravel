@@ -2,13 +2,14 @@
 
 namespace App;
 
+use App\Traits\uuidTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class FlowerCatalog extends Model
 {
     //
-
+    use uuidTrait;
     // protected $primaryKey = 'id';
 
     public $incrementing = false;
@@ -17,9 +18,9 @@ class FlowerCatalog extends Model
 
     protected static function boot() {
         parent::boot();
-        static::creating(function ($flowerCatalog) {
-            $flowerCatalog->{$flowerCatalog->getKeyName()} = (string) Str::uuid();
-        });
+        //static::creating(function ($flowerCatalog) {
+        //    $flowerCatalog->{$flowerCatalog->getKeyName()} = (string) Str::uuid();
+        //});
     }
 
     public function flowers()
@@ -31,4 +32,5 @@ class FlowerCatalog extends Model
     public function getNameCatalogAttribute($value) {
         return 'Your data is ' . $value;
     }
+
 }

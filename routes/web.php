@@ -42,3 +42,14 @@ Route::get('/nameaccs', function () {
    $nameCatalogWithAccessor = \App\FlowerCatalog::first()->name_catalog;
    return $nameCatalogWithAccessor;
 });
+
+Route::get('/finalprice/{flower}', function($flower) {
+    $finalPrice  = \App\Flower::where('id', $flower)->first()->final_price;
+    echo 'Final price = ' . $finalPrice;
+    //dd(\App\Flower::where('id', $flower)->first());
+});
+
+Route::get('/topprice', function () {
+   $res = \App\Flower::topPrice(800)->get();
+   return response($res);
+});

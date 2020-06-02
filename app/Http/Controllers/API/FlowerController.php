@@ -45,7 +45,19 @@ class FlowerController extends Controller
     public function store(CreateFlowerRequest $request)
     {
         //
-        Flower::create($request->all());
+        //Flower::create($request->all());
+        $newFlower = new Flower;
+        $newFlower->catalog_id = $request->input('catalog_id');
+        $newFlower->name = $request->input('name');
+        $newFlower->color = $request->input('color');
+        $newFlower->price = $request->input('price');
+        $newFlower->discount = $request->input('discount');
+        $newFlower->image_link = $request->input('image_link');
+        $newFlower->image_list = $request->input('image_list');
+        $newFlower->view = $request->input('view');
+        $newFlower->votes = $request->input('votes');
+
+        $newFlower->save();
 
         return response()->json("store successfully");
     }
