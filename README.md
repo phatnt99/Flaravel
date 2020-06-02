@@ -11,4 +11,7 @@
 ### Fix bug and learn Eloquent ORM - 2/6/2020
 - Fix filter data of FlowerCatalog from FlowerTransformer
 - Transforming set of data using custom function
+- Use Accessor, Mutator for Flower Model
+- Use UuidTrait to reuse code of auto create UUID for Flower, FlowerCatalog
+- Use Scope (Globle Scope, Dynamic Scope) for Flower
 
