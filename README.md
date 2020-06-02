@@ -8,3 +8,7 @@
 ### Blade with Form Collective - 29/5/2020
 - Make flower catalog (catalog.blade.php) using Form Collective
 - Create, Update using Form Collective
+### Fix bug and learn Eloquent ORM - 2/6/2020
+- Fix filter data of FlowerCatalog from FlowerTransformer
+- Transforming set of data using custom function
+
