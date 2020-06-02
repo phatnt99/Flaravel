@@ -24,7 +24,7 @@ class Flower extends Model
         });
     }
 
-    public function flower_catalogs()
+    public function flowerCatalog()
     {
         return $this->belongsTo('App\FlowerCatalog', 'catalog_id', 'id');
     }

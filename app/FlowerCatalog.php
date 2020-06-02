@@ -22,7 +22,7 @@ class FlowerCatalog extends Model
         });
     }
 
-    public function flower()
+    public function flowers()
     {
         return $this->hasMany("App\Flower", 'catalog_id');
     }

@@ -4,8 +4,6 @@ namespace App\Transformers;
 
 use App\Flower;
 use Flugg\Responder\Transformers\Transformer;
-use Illuminate\Database\Eloquent\Builder;
-use function foo\func;
 
 class FlowerTransformer extends Transformer
 {
@@ -32,32 +30,21 @@ class FlowerTransformer extends Transformer
      * @param  \App\Flower $flower
      * @return array
      */
-    public function transform(Flower $flower)
+    public function transform($flower)
     {
-        return [
-            'id' => $flower->id,
-            'name' => $flower->name,
-            'price' => $flower->price
-        ];
+        return $flower;
     }
 
-
-    /**
-     *
-     *
-     * @param  Builder $query
-     * @return Builder
-     */
-
-    public function includeFlowerCatalog(Flower $flower) {
-        return $flower->flower_catalogs;
-    }
-
-    /*
     public function loadFlowerCatalog($query) {
-        return $query->where('name_catalog', '=', 'Dr. Dewitt Schumm DVM');
+        return $query->where('name_catalog', 'LIKE', '%World%');
     }
-    */
+
+    public function getCustomCollection($flower) {
+        return $flower->map(function ($item, $key) {
+            return ['id' => $item->id, 'name' => $item->name, 'price' => $item->price];
+        });
+    }
+
     /*
 
     public function filterFlowerCatalog($flowerCatalog)

@@ -21,5 +21,5 @@ Route::apiResource('catalogs', 'API\FlowerCatalogController');
 
 Route::apiResource('flowers','API\FlowerController');
 
-Route::get('flowersfractal','API\FlowerController@indexWithTransformer');
+Route::get('fractals','API\FlowerController@indexWithTransformer');
 

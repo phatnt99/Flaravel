@@ -96,9 +96,11 @@ class FlowerController extends Controller
     public function indexWithTransformer() {
 
         //Include by query string
+        //return response(Flower::all());
         //http://flower.com:8080/api/flowersfractal?with=flowerCatalog
-        return \responder()->success(Flower::all(), FlowerTransformer::class)->with(['flowerCatalog' => function($query) {
-            return $query->where('name_catalog', '=', 'Dr. Dewitt Schumm DVM');
-        }])->respond();
+        //$a = (new FlowerTransformer())->transform(Flower::all());
+
+        $a = (new FlowerTransformer)->getCustomCollection(Flower::all());
+        return \responder()->success($a)->respond();
     }
 }

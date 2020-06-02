@@ -13,7 +13,6 @@ class FlowerCatalogTransformer extends Transformer
      * @var string[]
      */
     protected $relations = [
-        'flowers' => FlowerTransformer::class
     ];
 
     /**
@@ -21,7 +20,8 @@ class FlowerCatalogTransformer extends Transformer
      *
      * @var array
      */
-    protected $load = [];
+    protected $load = [
+    ];
 
     /**
      * Transform the model.
@@ -38,15 +38,6 @@ class FlowerCatalogTransformer extends Transformer
         ];
     }
 
-    public function transformWithoutParentId(FlowerCatalog $flowerCatalog) {
-        return [
-            'id' => $flowerCatalog->id,
-            'name_catalog' => $flowerCatalog->name_catalog,
-        ];
-    }
-    public function includeFLowers(FlowerCatalog $flowerCatalog) {
-        return $flowerCatalog->flower();
-    }
 
 
 
