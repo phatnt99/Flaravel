@@ -15,8 +15,17 @@ class FlowerCatalogController extends Controller
         $allCatalog = FlowerCatalog::paginate(5);
         $arrCatalog = array_values(array_map(function($id) {
             return [$id['id'] => $id['name_catalog']];
-        }, FlowerCatalog::all()->all()));
-        return view('catalog', ['catalos' => $arrCatalog, 'catalogs' => $allCatalog]);
+        }, FlowerCatalog::all()->toArray()));
+
+        $coll  = FlowerCatalog::all();
+        $newCol = $coll->reduce(function ($result, $flow) {
+           $result[$flow['id']] = $flow['name_catalog'];
+           return $result;
+//           return [$flow['id'] => $flow['name_catalog']];
+        }, []);
+
+        dd($newCol);
+        //return view('catalog', ['catalos' => $arrCatalog, 'catalogs' => $allCatalog]);
     }
 
     public function update(Request $request, FlowerCatalog $flowerCatalog) {
