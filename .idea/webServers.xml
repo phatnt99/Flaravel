@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="6618b26f-e557-4a1f-9084-946109b8b12a" name="localhost" url="http://flower.com:8080/">
+        <fileTransfer mountedRoot="C:\xampp\htdocs\FlowerShop" accessType="MOUNT" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>

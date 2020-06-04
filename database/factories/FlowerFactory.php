@@ -9,7 +9,7 @@ $factory->define(Flower::class, function (Faker $faker) {
     //dd(App\FlowerCatalog::first()->id);
     return [
         //
-        'catalog_id' => App\FlowerCatalog::all()->random()->id,
+        'catalog_id' => App\Models\FlowerCatalog::all()->random()->id,
         'name' => $faker->name,
         'color' => $faker->safeColorName,
         'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 10000),

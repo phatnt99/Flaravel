@@ -54,6 +54,17 @@ Route::get('/topprice', function () {
    return response($res);
 });
 
-Auth::routes();
+Route::get('/authreq', function () {
+    return 'You are logged!';
+})->middleware('auth.basic');
+
+Route::get('/mail', function () {
+    return 'You are already verify mail!';
+})->middleware('verified');
+
+Auth::routes(['verify' => true]);
+
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
