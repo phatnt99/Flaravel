@@ -23,3 +23,11 @@ Route::apiResource('flowers','API\FlowerController');
 
 Route::get('fractals','API\FlowerController@indexWithTransformer');
 
+Route::prefix('jwt')->group(function() {
+    Route::post('/register', 'API\AuthController@register');
+    Route::post('/login', 'API\AuthController@login');
+    Route::get('/user', 'API\AuthController@getAuthenticatedUser')->middleware('jwt.auth');
+    Route::get('/logout', 'API\AuthController@logout');
+
+});
+
