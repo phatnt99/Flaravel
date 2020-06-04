@@ -53,3 +53,7 @@ Route::get('/topprice', function () {
    $res = \App\Flower::topPrice(800)->get();
    return response($res);
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
