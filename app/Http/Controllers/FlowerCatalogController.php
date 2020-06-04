@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\FlowerCatalog;
+use App\Models\FlowerCatalog;
 use App\Transformers\FlowerCatalogTransformer;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;

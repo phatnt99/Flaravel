@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Flower;
-use App\FlowerCatalog;
+use App\Models\Flower;
+use App\Models\FlowerCatalog;
 
 class FlowerController extends Controller
 {

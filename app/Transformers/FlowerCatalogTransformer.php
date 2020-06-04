@@ -2,7 +2,7 @@
 
 namespace App\Transformers;
 
-use App\FlowerCatalog;
+use App\Models\FlowerCatalog;
 use Flugg\Responder\Transformers\Transformer;
 
 class FlowerCatalogTransformer extends Transformer

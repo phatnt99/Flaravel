@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-use App\FlowerCatalog;
+use App\Models\FlowerCatalog;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateFlowerCatalogRequest;
 use App\Http\Requests\UpdateFlowerCatalogRequest;

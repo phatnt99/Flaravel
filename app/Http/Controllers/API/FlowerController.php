@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Flower;
+use App\Models\Flower;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateFlowerRequest;
 use App\Transformers\FlowerTransformer;
