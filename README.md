@@ -14,4 +14,9 @@
 - Use Accessor, Mutator for Flower Model
 - Use UuidTrait to reuse code of auto create UUID for Flower, FlowerCatalog
 - Use Scope (Globle Scope, Dynamic Scope) for Flower
+### Auth - JWT 5/6/2020
+- Create Authentication via User model
+- Make Email verification
+- Using JWT for api
+
 
