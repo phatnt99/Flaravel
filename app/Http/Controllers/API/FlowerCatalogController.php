@@ -6,10 +6,13 @@ use App\Models\FlowerCatalog;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateFlowerCatalogRequest;
 use App\Http\Requests\UpdateFlowerCatalogRequest;
+use App\Traits\JWTUserTrait;
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class FlowerCatalogController extends Controller
 {
+    use JWTUserTrait;
     /**
      * Display a listing of the resource.
      *
@@ -37,13 +40,21 @@ class FlowerCatalogController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param FlowerCatalog $flowerCatalog
-     * @return \Illuminate\Http\Response
+     * @param  $id
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function show(FlowerCatalog $flowerCatalog)
+    public function show($id)
     {
-        //
-        return response($flowerCatalog);
+        /*use Policy:
+        Only user who own this catalog can view detail
+        */
+        $flowerCatalog = FlowerCatalog::where('id', $id)->first();
+        $user = JWTAuth::parseToken()->toUser(); //this returns the user
+        if($user->can('view', $flowerCatalog)) {
+            return response()->json($flowerCatalog);
+        }
+        else
+            return response()->json('You are not allow to see this content', '403');
     }
 
     /**
@@ -60,6 +71,7 @@ class FlowerCatalogController extends Controller
         //dd($id);
         $res =FlowerCatalog::where('id', $id)->update($request->except(['_method', '_token']));
         return response($res);
+
     }
 
     /**
