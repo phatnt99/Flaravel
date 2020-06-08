@@ -12,6 +12,7 @@ class User extends Authenticatable implements MustVerifyEmail, JWTSubject
 {
     //
     use Notifiable;
+
     protected $fillable = ['name', 'email', 'password', 'address'];
 
     public function getJWTIdentifier()

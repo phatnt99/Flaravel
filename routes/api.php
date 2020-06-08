@@ -28,6 +28,5 @@ Route::prefix('jwt')->group(function() {
     Route::post('/login', 'API\AuthController@login');
     Route::get('/user', 'API\AuthController@getAuthenticatedUser')->middleware('jwt.auth');
     Route::get('/logout', 'API\AuthController@logout');
-
 });
 
