@@ -18,5 +18,4 @@
 - Create Authentication via User model
 - Make Email verification
 - Using JWT for api
-
-
+- Using Policy in FlowerCatalogController
