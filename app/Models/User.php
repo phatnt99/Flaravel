@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
-
-class User extends Authenticatable implements MustVerifyEmail, JWTSubject
+class User extends Authenticatable implements MustVerifyEmail, JWTSubject, CanResetPassword
 {
     //
-    use Notifiable;
+    use Notifiable, \Illuminate\Auth\Passwords\CanResetPassword;
 
     protected $fillable = ['name', 'email', 'password', 'address'];
 
