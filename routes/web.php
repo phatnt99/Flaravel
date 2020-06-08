@@ -67,4 +67,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/send-mail', 'MailController@index');
+
+Route::get('/form-mail', 'MailController@showFormSendMail');
+Route::post('/form-mail', 'MailController@sendMail')->name('sendmail');
 

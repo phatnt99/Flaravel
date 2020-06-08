@@ -19,3 +19,4 @@
 - Make Email verification
 - Using JWT for api
 - Using Policy in FlowerCatalogController
+- Create Form for send mail using Form Collective, Mailable.
